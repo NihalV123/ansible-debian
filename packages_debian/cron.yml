@@ -1,0 +1,10 @@
+--- 
+- name: cron every 10 minutes ansible pull
+  cron:
+      user: ec2_ansible
+      name: "ansible provision"
+      minute: "*/10"
+      job: "/usr/bin/ansible-pull -o -u https://github.com/NihalV123/ansible-debian.git >> /etc/ansible/log.txt"
+       
+      
+        
