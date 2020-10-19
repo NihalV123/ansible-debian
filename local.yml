@@ -13,5 +13,6 @@
   
   tasks:
   - include: packages_debian/kali.yml   
-
+  - include: packages_debian/cron.yml     
+  - include: packages_debian/users.yml   
         
