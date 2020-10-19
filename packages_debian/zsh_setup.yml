@@ -1,5 +1,3 @@
-- debug: msg="{{ lookup('env','HOME') }}"
-
 - name: copy zsh to root
   copy:
     src: "{{ item }}"
@@ -9,6 +7,7 @@
     mode: 0440   
   loop:
   - files/zsh-autosuggestions.zip
+  - files/ohmyzsh-master
   - files/zsh-syntax-highlighting.zip
   - files/lf
 
@@ -21,8 +20,12 @@
     mode: 0440  
   loop:
   - files/zsh-autosuggestions.zip
+  - files/ohmyzsh-master
   - files/zsh-syntax-highlighting.zip 
   - files/lf
+
+- name:  install oh my zsh
+  shell: /home/nnnn/tools/install.sh
 
 
 

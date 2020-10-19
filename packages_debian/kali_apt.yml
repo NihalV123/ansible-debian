@@ -27,6 +27,7 @@
       name: "{{ item }}"
   loop:
   - htop
+  - zsh
   - neofetch
   - docker.io      
   - nodejs   
