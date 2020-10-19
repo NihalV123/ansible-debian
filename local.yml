@@ -38,10 +38,14 @@
     tags: composer
   - name: install npm package globally.
     npm: name=npm global=yes
+  - name: install redux-thunk package globally.
+    npm: name=redux-thunk global=yes
+  - name: install shave package globally.
+    become: true
+    npm: name=shave global=yes
   - include: packages_debian/users.yml  
   - include: packages_debian/kali_apt.yml   
-  - include: packages_debian/kali_python.yml   
-  - include: packages_debian/kali_node.yml   
+  - include: packages_debian/kali_python.yml    
   - include: packages_debian/kali_docker.yml   
   - include: packages_debian/cron.yml     
 
