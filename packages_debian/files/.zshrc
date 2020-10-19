@@ -372,6 +372,7 @@ z
 zeus
 zsh-navigation-tools
 zsh-autosuggestions
+zsh-completions
 )
 
 source $ZSH/.oh-my-zsh/oh-my-zsh.sh
@@ -402,7 +403,7 @@ source $ZSH/.oh-my-zsh/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # Basic auto/tab complete:
-autoload -U compinit
+autoload -U compinit && compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
@@ -447,4 +448,4 @@ fi
 neofetch
 rig| toilet -f term -F border --gay
 fortune |  lolcat
-source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting-master/zsh-syntax-highlighting.zsh
