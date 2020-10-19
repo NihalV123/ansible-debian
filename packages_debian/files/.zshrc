@@ -446,6 +446,5 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 neofetch
 rig| toilet -f term -F border --gay
-chuck_cow | lolcat
-fortune | cowsay | lolcat
+fortune |  lolcat
 source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

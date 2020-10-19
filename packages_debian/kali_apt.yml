@@ -35,10 +35,8 @@
   - docker.io      
   - nodejs   
   - virtualenv     
-  - cowsay
   - fortune  
   - lolcat   
-  - chuck_cow    
   - toilet   
   - rig   
 
