@@ -36,8 +36,7 @@
   - nodejs   
   - virtualenv     
   - cowsay
-  - fortune
-  - espeak    
+  - fortune  
   - lolcat   
   - chuck_cow    
   - toilet   

@@ -448,5 +448,4 @@ neofetch
 rig| toilet -f term -F border --gay
 chuck_cow | lolcat
 fortune | cowsay | lolcat
-espeak "Ready"
 source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
