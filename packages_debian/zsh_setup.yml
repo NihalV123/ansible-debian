@@ -64,9 +64,9 @@
   copy:
     src: "{{ item }}"
     dest: /home/nnnn/
-    owner: root
-    group: root
-    mode: 0440  
+    owner: nnnn
+    group: nnnn
+    mode: 0644 
   loop:
   - files/lf
   - files/.p10k.zsh
