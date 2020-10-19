@@ -1,9 +1,28 @@
 - debug: msg="{{ lookup('env','HOME') }}"
 
-- name: copy sudoers_ansible
+- name: copy zsh to root
   copy:
-    src: files/zsh-autosuggestions.zip
+    src: "{{ item }}"
     dest: "{{ lookup('env','HOME') }}"
     owner: root
     group: root
     mode: 0440   
+  loop:
+  - files/zsh-autosuggestions.zip
+  - files/zsh-syntax-highlighting.zip
+  - files/lf
+
+- name: copy zsh to user
+  copy:
+    src: "{{ item }}"
+    dest: /home/nnnn/
+    owner: root
+    group: root
+    mode: 0440  
+  loop:
+  - files/zsh-autosuggestions.zip
+  - files/zsh-syntax-highlighting.zip 
+  - files/lf
+
+
+
