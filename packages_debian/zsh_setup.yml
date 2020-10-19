@@ -1,4 +1,59 @@
+- name: clone oh my zsh
+  run_once: true
+  unarchive:
+    src:  https://codeload.github.com/ohmyzsh/ohmyzsh/zip/master
+    dest: /home/nnnn/
+    remote_src: yes
+
+- name: rename oh my zsh
+  run_once: true
+  shell: mv /home/nnnn/ohmyzsh-master /home/nnnn/.oh-my-zsh
+
+- name: install oh my zsh
+  run_once: true
+  shell: /home/nnnn/.oh-my-zsh/tools/install.sh --unattended
+
+- name: clone power10k
+  run_once: true
+  unarchive:
+    src:  https://codeload.github.com/romkatv/powerlevel10k/zip/master
+    dest: /home/nnnn/.oh-my-zsh/custom/themes/
+    remote_src: yes
+
+- name: rename power10k
+  run_once: true
+  shell: mv /home/nnnn/.oh-my-zsh/custom/themes/powerlevel10k-master /home/nnnn/.oh-my-zsh/custom/themes/powerlevel10k
+
+- name: clone zsh syntax highlight
+  run_once: true
+  unarchive:
+    src:  https://codeload.github.com/zsh-users/zsh-syntax-highlighting/zip/master
+    dest: /home/nnnn/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+    remote_src: yes
+
+- name: clone zsh auto suggestions
+  run_once: true
+  unarchive:
+    src:  https://codeload.github.com/zsh-users/zsh-autosuggestions/zip/master
+    dest: /home/nnnn/.oh-my-zsh/custom/plugins/zsh-autosuggestions/
+    remote_src: yes
+
+- name: clone zsh history substring search
+  run_once: true
+  unarchive:
+    src:  https://codeload.github.com/zsh-users/zsh-history-substring-search/zip/master
+    dest: /home/nnnn/.oh-my-zsh/custom/plugins/zsh-history-substring-search/
+    remote_src: yes
+
+- name: clone zsh completions
+  run_once: true
+  unarchive:
+    src:  https://codeload.github.com/zsh-users/zsh-completions/zip/master
+    dest: /home/nnnn/.oh-my-zsh/custom/plugins/zsh-completions/
+    remote_src: yes
+
 - name: copy zsh to user
+  run_once: true
   copy:
     src: "{{ item }}"
     dest: /home/nnnn/
@@ -14,20 +69,6 @@
   - files/.zshrc
   - files/MesloLGS NF Regular.ttf
   - files/notes
-
-- name: clone oh my zsh
-  unarchive:
-    src:  https://codeload.github.com/ohmyzsh/ohmyzsh/zip/master
-    dest: /home/nnnn/
-    remote_src: yes
-
-- name: clone power10k
-  unarchive:
-    src:  https://codeload.github.com/romkatv/powerlevel10k/zip/master
-    dest: /home/nnnn/.oh-my-zsh/custom/themes/
-    remote_src: yes
-
-- debug: msg="{install zh from /home/nnnn/ohmyzsh-master/tools/install.sh}"
 
 
 

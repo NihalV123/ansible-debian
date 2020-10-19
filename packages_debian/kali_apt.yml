@@ -26,15 +26,24 @@
   apt:
       name: "{{ item }}"
   loop:
+  - curl
+  - git
+  - python3-pip
   - htop
   - zsh
   - neofetch
   - docker.io      
   - nodejs   
-  - virtualenv      
+  - virtualenv     
+  - cowsay
+  - fortune
+  - espeak    
+  - lolcat   
+  - chuck_cow    
+  - toilet   
+  - rig   
 
 
-        
         
         
     
