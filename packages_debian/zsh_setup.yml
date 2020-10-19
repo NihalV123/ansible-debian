@@ -77,6 +77,6 @@
   - files/MesloLGS NF Regular.ttf
   - files/notes
 
-- msg: 'install using   /home/nnnn/.oh-my-zsh/tools/install.sh --unattended  if zsh not instaled'
+- debug: 'install using   /home/nnnn/.oh-my-zsh/tools/install.sh --unattended  if zsh not instaled'
 
 
