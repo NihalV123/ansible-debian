@@ -1,5 +1,4 @@
----
-- name: create user
+- name: create ansible user
   user:
     name: ec2_ansible
     system: yes
