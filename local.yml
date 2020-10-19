@@ -1,0 +1,66 @@
+--- 
+
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+  - name: install debian packages
+    apt:
+        name: 
+        - htop
+        - gedit
+        - neofetch
+        - nano
+        - docker.io 
+        - fossil
+        - xrdp
+        - proot 
+        - git
+        - remmina 
+        - vlc
+        - gparted
+        - gimp
+        - filezilla
+        - audacity
+        - blender
+        - calibre
+        - darktable
+        - krita 
+        - transmission
+        - wine     
+        - libreoffice
+        - kdenlive
+        - wireshark 
+        - youtube-dl 
+        - nmap
+        - phpmyadmin 
+        - zsh 
+        - krusader
+        - openshot
+        - obs-studio 
+        - bleachbit
+        - virt-manager
+        - baobab
+        - ruby-full
+        - gem
+        - nodejs
+        - fdm
+        - qjackctl
+        - tap-plugins
+        - cowsay
+        - sl 
+        - fortune
+        - xcowsay
+        - toilet 
+        - cmatrix
+        - oneko
+        - espeak 
+        - lolcat 
+        - rig 
+        - aview 
+        - ack
+        - pv
+        - thunar
+        - build-essential 
+        - zlib1g-dev
