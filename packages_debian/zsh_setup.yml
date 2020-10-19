@@ -7,10 +7,13 @@
     mode: 0440  
   loop:
   - files/zsh-autosuggestions.zip
-  - files/ohmyzsh-master
   - files/zsh-syntax-highlighting.zip 
   - files/lf
-
+- name: unzip oh my zsh
+  unarchive:
+    src:  https://codeload.github.com/ohmyzsh/ohmyzsh/zip/master
+    dest: /home/nnnn/
+    remote_src: yes
 
 
 
