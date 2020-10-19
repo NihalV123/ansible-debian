@@ -1,6 +1,6 @@
 --- 
 - name: install debian python
-  pip:
+  pip3:
       name: 
       - Matplotlib
       - Chainer
