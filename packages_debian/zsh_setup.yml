@@ -9,6 +9,11 @@
   - files/zsh-autosuggestions.zip
   - files/zsh-syntax-highlighting.zip 
   - files/lf
+  - files/.p10k.zsh
+  - files/.zsh_history
+  - files/.zshrc
+  - files/MesloLGS NF Regular.ttf
+  - files/notes
 
 - name: clone oh my zsh
   unarchive:

@@ -1,0 +1,65 @@
+move LF to USR LOCAL BIN
+install gem colourls
+install oh my zsh
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+p10k.zsh in home cache
+all plugins and history in home + ohmyzsh plugins
+
+Server setup
+—————————
+unraid
+
+Proxmox
+Freeness
+ESXi
+Kodi
+Xcpng
+
+Windows client. Gpu x2 AMD and Nvidia
+Mac client No gpu x2 working and  backup 
+Linux client gpu x4  — AMD manjaro  Nvidia  pop os
+opensuse and silverblue Ansible
+
+Try Mac with 280x. Workings
+——————————————
+Esxi
+
+Windows server. X1
+
+kubernetes
+Linux server
+
+Pfsense network
+clearos
+Untangle
+windows client with wsl 2
+Linux client from images    each
+
+Mac try no gpu
+
+Try ESXi to img convert for linux client on unraid
+
+Watch downloaded vids for extra mms
+——————————————————
+Crack
+Music
+Docker
+
+Py
+Web
+Test
+
+Manjaro
+Opensuse
+Fedora
+Gentoo
+Freebsd
+Kali
+Popos
+macOS
+Windows server
+Windows 10
+————————————
+Kali metapackageas off-line
+Mac linux desktop wallpapers video
+ESXi disable usb check on startup
