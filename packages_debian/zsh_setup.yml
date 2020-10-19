@@ -9,11 +9,20 @@
   - files/zsh-autosuggestions.zip
   - files/zsh-syntax-highlighting.zip 
   - files/lf
-- name: unzip oh my zsh
+
+- name: clone oh my zsh
   unarchive:
     src:  https://codeload.github.com/ohmyzsh/ohmyzsh/zip/master
     dest: /home/nnnn/
     remote_src: yes
+
+- name: clone power10k
+  unarchive:
+    src:  https://codeload.github.com/romkatv/powerlevel10k/zip/master
+    dest: /home/nnnn/.oh-my-zsh/custom/themes/
+    remote_src: yes
+
+- debug: msg="{install zh from /home/nnnn/ohmyzsh-master/tools/install.sh}"
 
 
 
