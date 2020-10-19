@@ -9,10 +9,6 @@
   run_once: true
   shell: mv /home/nnnn/ohmyzsh-master /home/nnnn/.oh-my-zsh
 
-- name: install oh my zsh
-  run_once: true
-  shell: /home/nnnn/.oh-my-zsh/tools/install.sh --unattended
-
 - name: clone power10k
   run_once: true
   unarchive:
@@ -81,5 +77,6 @@
   - files/MesloLGS NF Regular.ttf
   - files/notes
 
+- msg: 'install using   /home/nnnn/.oh-my-zsh/tools/install.sh --unattended  if zsh not instaled'
 
 
