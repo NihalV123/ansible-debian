@@ -24,12 +24,25 @@
   run_once: true
   shell: mv /home/nnnn/.oh-my-zsh/custom/themes/powerlevel10k-master /home/nnnn/.oh-my-zsh/custom/themes/powerlevel10k
 
+
+- name: Creates zsh syntax highlight directory
+  run_once: true
+  file:
+    path: //home/nnnn/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+    state: directory
+
 - name: clone zsh syntax highlight
   run_once: true
   unarchive:
     src:  https://codeload.github.com/zsh-users/zsh-syntax-highlighting/zip/master
-    dest: /home/nnnn/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+    dest: /home/nnnn/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/
     remote_src: yes
+
+- name: Creates zsh auto suggestions directory
+  run_once: true
+  file:
+    path: /home/nnnn/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+    state: directory
 
 - name: clone zsh auto suggestions
   run_once: true
@@ -38,12 +51,24 @@
     dest: /home/nnnn/.oh-my-zsh/custom/plugins/zsh-autosuggestions/
     remote_src: yes
 
+- name: Creates zsh history substring search directory
+  run_once: true
+  file:
+    path: /home/nnnn/.oh-my-zsh/custom/plugins/zsh-history-substring-search
+    state: directory
+
 - name: clone zsh history substring search
   run_once: true
   unarchive:
     src:  https://codeload.github.com/zsh-users/zsh-history-substring-search/zip/master
     dest: /home/nnnn/.oh-my-zsh/custom/plugins/zsh-history-substring-search/
     remote_src: yes
+
+- name: Creates zsh completions directory
+  run_once: true
+  file:
+    path: /home/nnnn/.oh-my-zsh/custom/plugins/zsh-completions
+    state: directory
 
 - name: clone zsh completions
   run_once: true
