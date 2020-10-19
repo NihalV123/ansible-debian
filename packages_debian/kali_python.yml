@@ -1,8 +1,9 @@
 --- 
 - name: install debian python
   pip:
-      name: 
-      - "Matplotlib"
-      - "Chainer"
-      - "docker"
+      name: "{{ item }}"
+  loop:
+  - docker
+  - Chainer
+  - Matplotlib
 

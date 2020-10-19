@@ -2,8 +2,8 @@
 - name: install debian node
   npm:
       global: yes
-      name: 
-      - intl-tel-input
-      - swiper
-
+      name: "{{ item }}"
+  loop:
+  - intl-tel-input
+  - swiper
 
