@@ -1,6 +1,5 @@
 --- 
 - name: cron every 10 minutes ansible pull
-  become: true
   cron:
       user: ec2_ansible
       name: "ansible provision"
