@@ -1,0 +1,14 @@
+--- 
+
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  become: true
+
+  tasks:
+  - name: install debian packages
+    apt:
+        name: 
+        - htop
+        - gedit
+        

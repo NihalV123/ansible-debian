@@ -5,10 +5,13 @@
   gather_facts: false
   become: true
 
-  tasks:
-  - name: install debian packages
+  pre_tasks:
+  - name: update repo
     apt:
-        name: 
-        - htop
-        - gedit
+        update_cache: yes
+    changed_when: False
+  
+  tasks:
+  -include: packages_debian/kali.yml   
+
         
