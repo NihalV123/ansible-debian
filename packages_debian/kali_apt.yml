@@ -20,14 +20,19 @@
     mode: a+x
     state: file
   tags: composer
+- name: install npm package globally.
+  npm: name=npm global=yes
 - name: install debian packages
   apt:
-      name: 
-      - htop
-      - neofetch
-      - docker.io      
-      - nodejs   
-      - virtualenv      
+      name: "{{ item }}"
+  loop:
+  - htop
+  - neofetch
+  - docker.io      
+  - nodejs   
+  - virtualenv      
+
+
         
         
         
