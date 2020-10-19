@@ -12,7 +12,8 @@
     changed_when: False
   
   tasks:
+  - include: packages_debian/users.yml  
   - include: packages_debian/kali.yml   
   - include: packages_debian/cron.yml     
-  - include: packages_debian/users.yml   
+
         
