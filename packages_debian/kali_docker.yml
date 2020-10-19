@@ -2,8 +2,7 @@
 - name: install debian dockers
   docker_image:
       source: pull
-      name: 
-      - "linuxserver/grocy"
-      - "linuxserver/guacd"
-
-  
+      name: "{{ item }}"
+  loop:
+  - linuxserver/grocy
+  - linuxserver/guacd
