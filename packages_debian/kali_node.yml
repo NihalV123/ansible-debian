@@ -1,8 +1,7 @@
 --- 
 - name: install debian node
-  become: true
   npm:
-      global : yes
+      global: yes
       name: 
       - intl-tel-input
       - swiper

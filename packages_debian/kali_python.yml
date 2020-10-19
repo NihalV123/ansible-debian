@@ -2,7 +2,7 @@
 - name: install debian python
   pip:
       name: 
-      - Matplotlib
-      - Chainer
-      - docker
+      - "Matplotlib"
+      - "Chainer"
+      - "docker"
 

@@ -1,8 +1,9 @@
 --- 
 - name: install debian dockers
   docker_image:
-      name: 
-      - linuxserver/grocy
-      - linuxserver/guacd
       source: pull
+      name: 
+      - "linuxserver/grocy"
+      - "linuxserver/guacd"
+
   
