@@ -1,0 +1,48 @@
+---
+- hosts: wsl
+  gather_facts: false
+  become: yes
+
+  tasks:
+    - name: docker ps
+      become: true
+      shell: "sh /home/nnnn/Desktop/generate_ticket.sh"
+      register: dockerps
+
+#    - name: nwodtuhs/exegol
+#      docker_image:
+#        name: nwodtuhs/exegol
+#        load_path: /home/nnnn/docker/exegolv1_0.tar
+#        state: present
+#        source: load
+
+    - block:
+      - name: "Checking folders"
+        become: true
+        stat:
+          path: "{{item}}"
+        with_items:
+          - "{{ dockerps.stdout_lines }}"
+        register: folder_stats
+
+      - name: load container from tarball
+        docker_image:
+          name:  "{{ item.item }}"
+          load_path: /home/nnnn/docker/{{ item.item }}v1_0.tar
+          state: present
+          source: load
+        loop: "{{ folder_stats.results }}"
+        when: not item.stat.exists
+
+    - name: Get running containers
+      become: true
+      docker_host_info:
+        containers: yes
+      register: docker_info
+
+    - name: Stop running containers
+      become: true    
+      docker_container:
+        name: "{{ item }}"
+        state: stopped
+      loop: "{{ docker_info.containers | map(attribute='Id') | list }}"

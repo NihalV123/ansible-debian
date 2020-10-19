@@ -3,5 +3,7 @@
   apt:
       name: 
       - htop
-      - gedit
+      - neofetch
+      - docker.io      
+      - nodejs
         

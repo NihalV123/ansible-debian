@@ -1,0 +1,7 @@
+--- 
+- name: install debian node
+  npm:
+      name: 
+      - intl-tel-input
+      - swiper
+

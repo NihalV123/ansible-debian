@@ -1,0 +1,47 @@
+---
+- hosts: wsl
+  gather_facts: false
+  become: yes
+
+  tasks:
+    - name: docker ps
+      become: true
+      shell: "sh /home/nnnn/Desktop/generate_ticket.sh"
+      register: dockerps
+
+#    - name: nwodtuhs/exegol
+#      become: true
+#      docker_image:
+#        name: nwodtuhs/exegol
+#        archive_path: /home/nnnn/docker/exegolv1_0.tar
+#        source: pull
+#        state: present
+
+    - block:
+      - name: "Checking folders"
+        become: true
+        stat:
+          path: "{{item}}"
+        with_items:
+          - "{{ dockerps.stdout_lines }}"
+        register: folder_stats
+
+      - name: Create the directory
+        file:
+          path: "/home/nnnn/docker/{{ item.item }}"
+          state: directory
+          owner: "nnnn"
+          group: "sudo"
+          mode: "0755"
+        loop: "{{ folder_stats.results }}"
+        when: not item.stat.exists
+
+      - name: backup directory
+        become: true
+        docker_image:
+          name: "{{ item.item }}"
+          archive_path: /home/nnnn/docker/{{ item.item }}v1_0.tar
+          source: pull
+          state: present
+        loop: "{{ folder_stats.results }}"
+        when: not item.stat.exists
