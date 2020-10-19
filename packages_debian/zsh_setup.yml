@@ -68,8 +68,6 @@
     group: root
     mode: 0440  
   loop:
-  - files/zsh-autosuggestions.zip
-  - files/zsh-syntax-highlighting.zip 
   - files/lf
   - files/.p10k.zsh
   - files/.zsh_history
