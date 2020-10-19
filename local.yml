@@ -20,6 +20,7 @@
   - include: packages_debian/kali_python.yml    
   - include: packages_debian/kali_docker.yml   
   - include: packages_debian/kali_node.yml   
+  - include: packages_debian/kali_ruby.yml   
   - include: packages_debian/zsh_setup.yml   
   - include: packages_debian/cron.yml     
 
