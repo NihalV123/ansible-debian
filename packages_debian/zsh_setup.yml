@@ -1,16 +1,3 @@
-- name: copy zsh to root
-  copy:
-    src: "{{ item }}"
-    dest: "{{ lookup('env','HOME') }}"
-    owner: root
-    group: root
-    mode: 0440   
-  loop:
-  - files/zsh-autosuggestions.zip
-  - files/ohmyzsh-master
-  - files/zsh-syntax-highlighting.zip
-  - files/lf
-
 - name: copy zsh to user
   copy:
     src: "{{ item }}"
@@ -24,8 +11,6 @@
   - files/zsh-syntax-highlighting.zip 
   - files/lf
 
-- name:  install oh my zsh
-  shell: /home/nnnn/tools/install.sh
 
 
 

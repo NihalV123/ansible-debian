@@ -9,3 +9,7 @@
   tasks:
   - debug: msg="{{ lookup('env','HOME') }}"
 
+  - name:  install oh my zsh
+    shell: /home/nnnn/tools/install.sh
+
+
