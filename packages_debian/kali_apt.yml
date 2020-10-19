@@ -5,8 +5,7 @@
       - htop
       - neofetch
       - docker.io      
-      - nodejs
-      - npm      
+      - nodejs   
       - virtualenv      
         
         
