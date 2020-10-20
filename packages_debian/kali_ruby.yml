@@ -1,9 +1,10 @@
 --- 
-- name: Install latest ruby gems
-  community.general.gem:
-    name: "{{ item }}"
-    state: latest
+- name: install ruby gems
+  become: false
+  gem: name={{ item }} 
+  with_items: ruby_gems
   loop:
   - vagrant
   - rake
   - colorls
+

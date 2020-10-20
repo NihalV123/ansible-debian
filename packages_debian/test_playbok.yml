@@ -6,8 +6,20 @@
   vars:
     ansible_python_interpreter: /usr/bin/python3
     string_conversion_action: ignore
+
   tasks:
-  - debug: msg="{{ lookup('env','HOME') }}"
+
+  - name: install ruby gems
+    become: false
+    gem: name={{ item }} 
+    with_items: ruby_gems
+    loop:
+    - vagrant
+    - rake
+    - colorls
+
+
+  - debug: msg="{{ lookup('env','HOME') }   }"
 
   vars_prompt:
 
