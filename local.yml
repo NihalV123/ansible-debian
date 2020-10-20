@@ -20,7 +20,14 @@
     with_items: 
     - "{{ ansible_distribution }}"
     - "{{ ansible_distribution_version }}"
+    - "{{ ansible_hostname }}"
+    - "{{ ansible_fqdn }}"
     - "{{ ansible_distribution_major_version }}"
+    
+  - name: install latest kali top10
+    apt: name=htop state=latest
+    when: ansible_facts['distribution'] == "Kali GNU/Linux"
+    
   - include: packages_debian/users.yml  
   - include: packages_debian/kali_apt.yml   
   - include: packages_debian/kali_python.yml    

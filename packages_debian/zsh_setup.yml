@@ -34,12 +34,12 @@
 - name: check powerlevel10k directory present
   stat:
    path: /home/ec2_ansible/.oh-my-zsh/custom/themes/powerlevel10k-master
-  register: p
+  register: pow
 
 - name: rename power10k
   run_once: true
   shell: mv /home/ec2_ansible/.oh-my-zsh/custom/themes/powerlevel10k-master /home/ec2_ansible/.oh-my-zsh/themes/powerlevel10k
-  when: not p.stat.exists
+  when: not pow.stat.exists
 
 - name: Creates zsh plugins directory
   run_once: true
@@ -53,6 +53,20 @@
   - /home/ec2_ansible/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
   - /home/ec2_ansible/.oh-my-zsh/custom/plugins/zsh-history-substring-search
   - /home/ec2_ansible/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+  
+- name: Creates zsh plugins directory
+  run_once: true
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: nnnn
+    group: nnnn
+    mode: '0755'
+  loop:
+  - /home/nnnn/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+  - /home/nnnn/.oh-my-zsh/custom/plugins/zsh-history-substring-search
+  - /home/nnnn/.oh-my-zsh/custom/plugins/zsh-autosuggestions  
+  
 
 - name: clone zsh syntax highlight
   run_once: true
@@ -112,18 +126,63 @@
   loop:
   - files/MesloLGS NF Regular.ttf
 
-- name: copy zsh to user
-  run_once: true
-  shell: cp -r /etc/skel/.oh-my-zsh /home/nnnn/
-  
-- name: copy zsh to user
-  run_once: true
-  shell: cp -r /etc/skel/.zshrc /home/nnnn/ 
+- name: check zsh systemwide present
+  stat:
+   path: /etc/skel/.oh-my-zsh
+  register: z1
 
 - name: copy zsh systemwide
   run_once: true
   shell: cp -r /home/ec2_ansible/.oh-my-zsh /etc/skel/
-  
+  when: not z1.stat.exists
+
+- name: check zsh systemwide present
+  stat:
+   path: /etc/skel/.zshrc 
+  register: z3
+    
 - name: copy zsh systemwide
   run_once: true
   shell: cp -r /home/ec2_ansible/.zshrc /etc/skel/ 
+  when: not z3.stat.exists  
+
+- name: check zsh systemwide present
+  stat:
+   path: /etc/skel/.p10k.zsh 
+  register: z4
+  
+- name: copy zsh systemwide
+  run_once: true
+  shell: cp -r /home/ec2_ansible/.p10k.zsh /etc/skel/ 
+  when: not z4.stat.exists  
+  
+- name: check zsh user present
+  stat:
+   path: /home/nnnn/.oh-my-zsh
+  register: z2
+
+- name: copy zsh user
+  run_once: true
+  shell: cp -r /etc/skel/.oh-my-zsh /home/nnnn/
+  when: not z2.stat.exists
+
+- name: check zsh user present
+  stat:
+   path: /home/nnnn/.zshrc
+  register: z5
+    
+- name: copy zsh user
+  run_once: true
+  shell: cp -r /etc/skel/.zshrc /home/nnnn/ 
+  when: not z5.stat.exists  
+  
+- name: check zsh user present
+  stat:
+   path: /home/nnnn/.p10k.zsh 
+  register: z6
+    
+- name: copy zsh  user
+  run_once: true
+  shell: cp -r /etc/skel/.p10k.zsh /home/nnnn/ 
+  when: not z6.stat.exists    
+
