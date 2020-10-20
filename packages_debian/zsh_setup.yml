@@ -82,15 +82,4 @@
   loop:
   - files/MesloLGS NF Regular.ttf
 
-- name: copy zsh to system
-  run_once: true
-  copy:
-    src: "{{ item }}"
-    dest: /etc/skel/
-  loop:
-  - /home/nnnn/.oh-my-zsh 
-  - /home/nnnn/.zshrc
-
-
-#  - files/.zsh_history
 
