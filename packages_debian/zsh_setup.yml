@@ -158,7 +158,7 @@
   
 - name: check zsh user present
   stat:
-   path: /home/nnnn/.oh-my-zsh
+   path: /home/nnnn/.oh-my-zsh/themes
   register: z2
 
 - name: copy zsh user
