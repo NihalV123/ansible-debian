@@ -5,7 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 ZSH_DISABLE_COMPFIX="true"
 # Path to your oh-my-zsh installation.
-export ZSH="~/.oh-my-zsh"
+export ZSH="/home/nnnn/.oh-my-zsh"
 
 autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
@@ -401,8 +401,8 @@ source $ZSH/oh-my-zsh.sh
 # Basic auto/tab complete:
 zstyle ':completion:*' menu select
 zmodload zsh/complist
-compinit
 autoload -U compinit && compinit
+compinit
 _comp_options+=(globdots)		# Include hidden files.
 
 autoload -U select-quoted
