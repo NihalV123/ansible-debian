@@ -28,17 +28,17 @@
   run_once: true
   unarchive:
     src:  https://codeload.github.com/romkatv/powerlevel10k/zip/master
-    dest: /home/ec2_ansible/.oh-my-zsh/custom/themes/
+    dest: /home/ec2_ansible/.oh-my-zsh/themes/
     remote_src: yes
 
 - name: check powerlevel10k directory present
   stat:
-   path: /home/ec2_ansible/.oh-my-zsh/custom/themes/powerlevel10k-master
+   path: /home/ec2_ansible/.oh-my-zsh/themes/powerlevel10k-master
   register: pow
 
 - name: rename power10k
   run_once: true
-  shell: mv /home/ec2_ansible/.oh-my-zsh/custom/themes/powerlevel10k-master /home/ec2_ansible/.oh-my-zsh/themes/powerlevel10k
+  shell: mv /home/ec2_ansible/.oh-my-zsh/themes/powerlevel10k-master /home/ec2_ansible/.oh-my-zsh/themes/powerlevel10k
   when: not pow.stat.exists
 
 - name: Creates zsh plugins directory
@@ -188,7 +188,7 @@
 
 - name: check powerlevel10k directory present
   stat:
-   path: /home/nnnn/.oh-my-zsh/custom/themes/powerlevel10k-master
+   path: /home/nnnn/.oh-my-zsh/themes/powerlevel10k-master
   register: power
 
 - name: rename power10k
