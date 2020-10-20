@@ -6,6 +6,7 @@
   - curl
   - php
   - nodejs
+  - npm
   - fossil
   - font-manager
   - libsqlite3-dev
@@ -26,9 +27,6 @@
   - gem   
   - ruby-full   
   - baobab   
-    
-- name: install npm package globally.
-  npm: name=npm global=yes
     
 - name: download composer
   get_url:
