@@ -10,3 +10,13 @@
     owner: root
     group: root
     mode: 0440    
+
+- name: Ansible check directory exists example.
+  stat:
+    path: /usr/share/code     
+  register: p
+        
+- name: Install vscode from deb
+  apt: 
+    deb: https://az764295.vo.msecnd.net/stable/d2e414d9e4239a252d1ab117bd7067f125afd80a/code_1.50.1-1602600906_amd64.deb
+  when: not p.stat.isdir is defined and p.stat.isdir

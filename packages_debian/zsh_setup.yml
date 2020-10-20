@@ -5,9 +5,16 @@
     dest: /home/ec2_ansible/
     remote_src: yes
 
+
+- name: check if zsh is installed
+  stat:
+    path: /home/ec2_ansible/.oh-my-zsh   
+  register: o
+
 - name: rename oh my zsh
   run_once: true
-  shell: mv /home/ec2_ansible/ohmyzsh-master /home/ec2_ansible/.oh-my-zsh
+  shell: mv  /home/ec2_ansible/ohmyzsh-master /home/ec2_ansible/.oh-my-zsh
+  when: not o.stat.isdir is defined and o.stat.isdir
 
 - name: Permissions for zsh
   file:
@@ -17,16 +24,22 @@
     group: nnnn
     mode: '0755'
 
-- name: clone power10k
+- name: clone power10k 
   run_once: true
   unarchive:
     src:  https://codeload.github.com/romkatv/powerlevel10k/zip/master
     dest: /home/ec2_ansible/.oh-my-zsh/custom/themes/
     remote_src: yes
 
+- name: check powerlevel10k directory present
+  stat:
+   path: /home/ec2_ansible/.oh-my-zsh/custom/themes/powerlevel10k-master
+  register: p
+
 - name: rename power10k
   run_once: true
   shell: mv /home/ec2_ansible/.oh-my-zsh/custom/themes/powerlevel10k-master /home/ec2_ansible/.oh-my-zsh/themes/powerlevel10k
+  when: not p.stat.exists
 
 - name: Creates zsh plugins directory
   run_once: true
@@ -99,4 +112,18 @@
   loop:
   - files/MesloLGS NF Regular.ttf
 
+- name: copy zsh to user
+  run_once: true
+  shell: cp -r /etc/skel/.oh-my-zsh /home/nnnn/
+  
+- name: copy zsh to user
+  run_once: true
+  shell: cp -r /etc/skel/.zshrc /home/nnnn/ 
 
+- name: copy zsh systemwide
+  run_once: true
+  shell: cp -r /home/ec2_ansible/.oh-my-zsh /etc/skel/
+  
+- name: copy zsh systemwide
+  run_once: true
+  shell: cp -r /home/ec2_ansible/.zshrc /etc/skel/ 

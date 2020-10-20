@@ -1,9 +1,9 @@
 --- 
-- name: cron every 10 minutes ansible pull
+- name: cron every 60 minutes ansible pull
   cron:
       user: ec2_ansible
       name: "ansible provision"
-      minute: "*/10"
+      minute: "*/60"
       job: "{{ item }}"  
   loop:
   - "/usr/bin/ansible-pull -o -U https://github.com/NihalV123/ansible-debian.git >> /home/ec2_ansible/ansible_log.txt"

@@ -1,4 +1,8 @@
 --- 
+- name: Make sure a docker service is running
+  service:
+    state: started
+    name: docker
 - name: install debian dockers
   docker_image:
       source: pull
