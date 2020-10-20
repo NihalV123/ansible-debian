@@ -186,3 +186,14 @@
   shell: cp -r /etc/skel/.p10k.zsh /home/nnnn/ 
   when: not z6.stat.exists    
 
+- name: check powerlevel10k directory present
+  stat:
+   path: /home/nnnn/.oh-my-zsh/custom/themes/powerlevel10k-master
+  register: power
+
+- name: rename power10k
+  run_once: true
+  shell: mv /home/ec2_ansible/.oh-my-zsh/themes/powerlevel10k /home/nnnn/.oh-my-zsh/themes/powerlevel10k
+  when: not power.stat.exists
+
+
