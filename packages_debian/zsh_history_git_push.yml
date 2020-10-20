@@ -1,0 +1,10 @@
+--- 
+- name: HTTPS | push all changes.
+  git_acp:
+    user: NihalV123
+    path: /home/nnnn/
+    branch: master
+    comment: Add all the thinghs.
+    add: [ "." ]
+    mode: https
+    url: "https://gitlab.com/networkAutomation/git_test_module.git"

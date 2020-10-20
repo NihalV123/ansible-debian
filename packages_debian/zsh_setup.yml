@@ -62,10 +62,35 @@
   loop:
   - files/lf
   - files/.p10k.zsh
-  - files/.zsh_history
   - files/.zshrc
-  - files/MesloLGS NF Regular.ttf
   - files/notes
 
+- name: Creates zsh cache directory
+  run_once: true
+  file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+  - /home/nnnn/.oh-my-zsh/cache/
+  - /home/nnnn/.oh-my-zsh/cache/last-working-dir
 
+- name: copy font to user
+  run_once: true
+  copy:
+    src: "{{ item }}"
+    dest: /home/nnnn/.local/share/fonts/
+  loop:
+  - files/MesloLGS NF Regular.ttf
+
+- name: copy zsh to system
+  run_once: true
+  copy:
+    src: "{{ item }}"
+    dest: /etc/skel/
+  loop:
+  - .oh-my-zsh 
+  - .zshrc
+
+
+#  - files/.zsh_history
 

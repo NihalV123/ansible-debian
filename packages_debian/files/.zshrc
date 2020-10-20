@@ -241,7 +241,6 @@ kubectl
 laravel
 laravel4
 laravel5
-last-working-dir
 lein
 lighthouse
 lol
@@ -311,7 +310,6 @@ safe-paste
 salt
 sbt
 scala
-scd
 screen
 scw
 sdk
@@ -401,10 +399,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # Basic auto/tab complete:
-autoload -U compinit && compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
+autoload -U compinit && compinit
 _comp_options+=(globdots)		# Include hidden files.
 
 autoload -U select-quoted
@@ -446,7 +444,7 @@ fi
 neofetch
 rig| toilet -f term -F border --gay
 fortune |  lolcat
-
+source ~/.oh-my-zsh/themes/powerlevel10k/powerlevel10k.zsh-theme
 source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting-master/zsh-syntax-highlighting.zsh
 source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions-master/zsh-autosuggestions.zsh
 source ~/.oh-my-zsh/custom/plugins/zsh-history-substring-search/zsh-history-substring-search-master/zsh-history-substring-search.zsh

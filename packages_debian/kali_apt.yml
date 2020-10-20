@@ -29,6 +29,7 @@
   - curl
   - git
   - fossil
+  - font-manager
   - libsqlite3-dev
   - sqlite3
   - python3-pip
