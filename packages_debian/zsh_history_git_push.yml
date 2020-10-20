@@ -2,7 +2,7 @@
 - name: HTTPS | push all changes.
   git_acp:
     user: NihalV123
-    path: /home/nnnn/
+    path: /home/ec2_ansible/
     branch: master
     comment: Add all the thinghs.
     add: [ "." ]

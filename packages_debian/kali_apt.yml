@@ -18,7 +18,8 @@
   - install-info
   - dh-autoreconf
   - libcurl4-gnutls-dev
-  - asciidoc
+  #- asciidoc
+  #- asciidoctor
   - xmlto
   - docbook2x
   - libexpat1-dev 
@@ -38,7 +39,48 @@
   - gem   
   - ruby-full   
   - baobab   
-    
+  - gedit   
+  - nano  
+  - fossil  
+  - xrdp  
+  - proot  
+  - remmina  
+   #- vlc  
+   #- gparted  
+   #- gimp  
+   #- filezilla  
+   #- audacity  
+   #- blender
+   #- calibre  
+   #- darktable  
+   #- krita  
+   #- transmission  
+   #- wine  
+   #- libreoffice  
+   #- kdenlive  
+   #- wireshark  
+   #- youtube-dl  
+   #- nmap  
+   #- phpmyadmin 
+   #- krusader 
+   #- openshot  
+   #- obs-studio  
+   #- bleachbit  
+   #- virt-manager  
+   #- ruby-full  
+   #- qjackctl  
+   #- tap-plugins  
+   #- sl  
+   #- cmatrix  
+   #- oneko   
+   #- rig  
+   #- aview  
+   #- ack  
+   #- pv  
+   #- thunar  
+   #- build-essential  
+   #- zlib1g-dev    
+
 - name: download composer
   get_url:
     url: https://getcomposer.org/installer

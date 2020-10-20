@@ -2,16 +2,16 @@
   run_once: true
   unarchive:
     src:  https://codeload.github.com/ohmyzsh/ohmyzsh/zip/master
-    dest: /home/nnnn/
+    dest: /home/ec2_ansible/
     remote_src: yes
 
 - name: rename oh my zsh
   run_once: true
-  shell: mv /home/nnnn/ohmyzsh-master /home/nnnn/.oh-my-zsh
+  shell: mv /home/ec2_ansible/ohmyzsh-master /home/ec2_ansible/.oh-my-zsh
 
 - name: Permissions for zsh
   file:
-    path: /home/nnnn/.oh-my-zsh
+    path: /home/ec2_ansible/.oh-my-zsh
     state: directory
     owner: nnnn
     group: nnnn
@@ -21,12 +21,12 @@
   run_once: true
   unarchive:
     src:  https://codeload.github.com/romkatv/powerlevel10k/zip/master
-    dest: /home/nnnn/.oh-my-zsh/custom/themes/
+    dest: /home/ec2_ansible/.oh-my-zsh/custom/themes/
     remote_src: yes
 
 - name: rename power10k
   run_once: true
-  shell: mv /home/nnnn/.oh-my-zsh/custom/themes/powerlevel10k-master /home/nnnn/.oh-my-zsh/themes/powerlevel10k
+  shell: mv /home/ec2_ansible/.oh-my-zsh/custom/themes/powerlevel10k-master /home/ec2_ansible/.oh-my-zsh/themes/powerlevel10k
 
 - name: Creates zsh plugins directory
   run_once: true
@@ -37,36 +37,36 @@
     group: nnnn
     mode: '0755'
   loop:
-  - /home/nnnn/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-  - /home/nnnn/.oh-my-zsh/custom/plugins/zsh-history-substring-search
-  - /home/nnnn/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+  - /home/ec2_ansible/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+  - /home/ec2_ansible/.oh-my-zsh/custom/plugins/zsh-history-substring-search
+  - /home/ec2_ansible/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 
 - name: clone zsh syntax highlight
   run_once: true
   unarchive:
     src:  https://codeload.github.com/zsh-users/zsh-syntax-highlighting/zip/master
-    dest: /home/nnnn/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/
+    dest: /home/ec2_ansible/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/
     remote_src: yes
 
 - name: clone zsh auto suggestions
   run_once: true
   unarchive:
     src:  https://codeload.github.com/zsh-users/zsh-autosuggestions/zip/master
-    dest: /home/nnnn/.oh-my-zsh/custom/plugins/zsh-autosuggestions/
+    dest: /home/ec2_ansible/.oh-my-zsh/custom/plugins/zsh-autosuggestions/
     remote_src: yes
 
 - name: clone zsh history substring search
   run_once: true
   unarchive:
     src:  https://codeload.github.com/zsh-users/zsh-history-substring-search/zip/master
-    dest: /home/nnnn/.oh-my-zsh/custom/plugins/zsh-history-substring-search/
+    dest: /home/ec2_ansible/.oh-my-zsh/custom/plugins/zsh-history-substring-search/
     remote_src: yes
 
 - name: copy zsh to user
   run_once: true
   copy:
     src: "{{ item }}"
-    dest: /home/nnnn/
+    dest: /home/ec2_ansible/
     owner: nnnn
     group: nnnn
     mode: '0755'
@@ -85,14 +85,14 @@
     group: nnnn
     mode: '0755' 
   loop:
-  - /home/nnnn/.oh-my-zsh/cache/
-  - /home/nnnn/.oh-my-zsh/cache/last-working-dir
+  - /home/ec2_ansible/.oh-my-zsh/cache/
+  - /home/ec2_ansible/.oh-my-zsh/cache/last-working-dir
 
 - name: copy font to user
   run_once: true
   copy:
     src: "{{ item }}"
-    dest: /home/nnnn/.local/share/fonts/
+    dest: /home/ec2_ansible/.local/share/fonts/
     owner: nnnn
     group: nnnn
     mode: '0755'
