@@ -193,7 +193,7 @@
 
 - name: rename power10k
   run_once: true
-  shell: mv /home/ec2_ansible/.oh-my-zsh/themes/powerlevel10k /home/nnnn/.oh-my-zsh/themes/powerlevel10k
+  shell: mv /home/ec2_ansible/.oh-my-zsh/themes/powerlevel10k-master /home/nnnn/.oh-my-zsh/themes/powerlevel10k
   when: not power.stat.exists
 
 
