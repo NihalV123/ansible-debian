@@ -18,7 +18,7 @@
 
 - name: rename power10k
   run_once: true
-  shell: mv /home/nnnn/.oh-my-zsh/custom/themes/powerlevel10k-master /home/nnnn/.oh-my-zsh/custom/themes/powerlevel10k
+  shell: mv /home/nnnn/.oh-my-zsh/custom/themes/powerlevel10k-master /home/nnnn/.oh-my-zsh/themes/powerlevel10k
 
 - name: Creates zsh plugins directory
   run_once: true
@@ -27,7 +27,6 @@
     state: directory
   loop:
   - /home/nnnn/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-  - /home/nnnn/.oh-my-zsh/custom/plugins/zsh-completions
   - /home/nnnn/.oh-my-zsh/custom/plugins/zsh-history-substring-search
   - /home/nnnn/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 
@@ -50,13 +49,6 @@
   unarchive:
     src:  https://codeload.github.com/zsh-users/zsh-history-substring-search/zip/master
     dest: /home/nnnn/.oh-my-zsh/custom/plugins/zsh-history-substring-search/
-    remote_src: yes
-
-- name: clone zsh completions
-  run_once: true
-  unarchive:
-    src:  https://codeload.github.com/zsh-users/zsh-completions/zip/master
-    dest: /home/nnnn/.oh-my-zsh/custom/plugins/zsh-completions/
     remote_src: yes
 
 - name: copy zsh to user

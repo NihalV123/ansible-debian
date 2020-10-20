@@ -89,7 +89,6 @@ path+=(
     $(ruby -e 'puts File.join(Gem.user_dir, "bin")')
 )
 source $(dirname $(gem which colorls))/tab_complete.sh
-
 prompt_codetalk() {
     local content='\uF17C c{}deTalk'
     $1_prompt_segment "$0" "$2" "black" "white" "$content" "#"
@@ -371,8 +370,6 @@ yum
 z
 zeus
 zsh-navigation-tools
-zsh-autosuggestions
-zsh-completions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -449,4 +446,7 @@ fi
 neofetch
 rig| toilet -f term -F border --gay
 fortune |  lolcat
+
 source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting-master/zsh-syntax-highlighting.zsh
+source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions-master/zsh-autosuggestions.zsh
+source ~/.oh-my-zsh/custom/plugins/zsh-history-substring-search/zsh-history-substring-search-master/zsh-history-substring-search.zsh
