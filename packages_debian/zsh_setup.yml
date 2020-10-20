@@ -9,6 +9,14 @@
   run_once: true
   shell: mv /home/nnnn/ohmyzsh-master /home/nnnn/.oh-my-zsh
 
+- name: Permissions for zsh
+  file:
+    path: /home/nnnn/.oh-my-zsh
+    state: directory
+    owner: nnnn
+    group: nnnn
+    mode: '0755'
+
 - name: clone power10k
   run_once: true
   unarchive:
@@ -25,6 +33,9 @@
   file:
     path: "{{ item }}"
     state: directory
+    owner: nnnn
+    group: nnnn
+    mode: '0755'
   loop:
   - /home/nnnn/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
   - /home/nnnn/.oh-my-zsh/custom/plugins/zsh-history-substring-search
@@ -58,7 +69,7 @@
     dest: /home/nnnn/
     owner: nnnn
     group: nnnn
-    mode: 0644 
+    mode: '0755'
   loop:
   - files/lf
   - files/.p10k.zsh
@@ -70,6 +81,9 @@
   file:
     path: "{{ item }}"
     state: directory
+    owner: nnnn
+    group: nnnn
+    mode: '0755' 
   loop:
   - /home/nnnn/.oh-my-zsh/cache/
   - /home/nnnn/.oh-my-zsh/cache/last-working-dir
@@ -79,6 +93,9 @@
   copy:
     src: "{{ item }}"
     dest: /home/nnnn/.local/share/fonts/
+    owner: nnnn
+    group: nnnn
+    mode: '0755'
   loop:
   - files/MesloLGS NF Regular.ttf
 

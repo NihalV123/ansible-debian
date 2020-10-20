@@ -137,7 +137,6 @@ cargo
 catimg
 celery
 chruby
-chucknorris
 codeclimate
 coffee
 colored-man-pages
