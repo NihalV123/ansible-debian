@@ -14,7 +14,7 @@
 - name: rename oh my zsh
   run_once: true
   shell: mv  /home/ec2_ansible/ohmyzsh-master /home/ec2_ansible/.oh-my-zsh
-  when: not o.stat.isdir is defined and o.stat.isdir
+  when: not o.stat.exists
 
 - name: Permissions for zsh
   file:
