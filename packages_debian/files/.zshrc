@@ -375,7 +375,8 @@ zsh-autosuggestions
 zsh-completions
 )
 
-source $ZSH~/.oh-my-zsh/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh
+
 
 # User configuration
 
