@@ -7,6 +7,7 @@
   - php
   - nodejs
   - npm
+  - git-all
   - fossil
   - font-manager
   - libsqlite3-dev
@@ -14,6 +15,16 @@
   - python3-pip
   - htop
   - ack
+  - install-info
+  - dh-autoreconf
+  - libcurl4-gnutls-dev
+  - asciidoc
+  - xmlto
+  - docbook2x
+  - libexpat1-dev 
+  - gettext 
+  - libz-dev 
+  - libssl-dev
   - zsh
   - neofetch
   - docker.io      
