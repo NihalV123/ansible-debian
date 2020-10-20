@@ -28,8 +28,12 @@
   loop:
   - curl
   - git
+  - fossil
+  - libsqlite3-dev
+  - sqlite3
   - python3-pip
   - htop
+  - ack
   - zsh
   - neofetch
   - docker.io      
