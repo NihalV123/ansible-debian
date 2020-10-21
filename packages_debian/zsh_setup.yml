@@ -111,6 +111,17 @@
   loop:
   - files/MesloLGS NF Regular.ttf
 
+- name: check existing zshrc
+  stat:
+   path: /home/nnnn/.zshrc
+  register: rc
+
+- name: rename zshrc for arch
+  copy:
+    src:  /home/nnnn/.zshrc
+    dest: /home/nnnn/.zshrc_back
+  when:  rc.stat.exists 
+
 - name: Sync ec2 to system
   synchronize:
     src: /home/ec2_ansible/ 
