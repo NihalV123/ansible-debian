@@ -8,7 +8,6 @@
     string_conversion_action: ignore
 
   tasks:
-
   - name: install ruby gems
     become: false
     gem: name={{ item }} 
@@ -17,24 +16,100 @@
     - vagrant
     - rake
     - colorls
-
-
+    
   - debug: msg="{{ lookup('env','HOME') }   }"
 
   vars_prompt:
-
     - name: username
       prompt: What is your username?
       private: no
-
     - name: password
       prompt: What is your password?
 
   tasks:
-
+    - name: Sync of src on the control machine to dest on the remote hosts
+      synchronize:
+        src: /home/nnnn/Desktop/client/ansible-debian/packages_debian/
+        dest: /home/nnnn/Desktop/nfs/
     - name: Print a message
       ansible.builtin.debug:
         msg: 'Logging in as {{ username }}'
+        
+#
+#
+#
+#- name: check oh my zsh systemwide present
+#  stat:
+#   path: /etc/skel/.oh-my-zsh
+#  register: z1
+#
+#- name: copy oh my zsh systemwide
+#  shell: cp -r /home/ec2_ansible/.oh-my-zsh /etc/skel/
+#  when: not z1.stat.exists
+#
+#- name: check zshrc systemwide present
+#  stat:
+#   path: /etc/skel/.zshrc 
+#  register: z3
+#    
+#- name: copy zshrc systemwide
+#  shell: cp -r /home/ec2_ansible/.zshrc /etc/skel/ 
+#  when: not z3.stat.exists  
+#
+#- name: check p10k config systemwide present
+#  stat:
+#   path: /etc/skel/.p10k.zsh 
+#  register: z4
+#  
+#- name: copy p10k config systemwide
+#  shell: cp -r /home/ec2_ansible/.p10k.zsh /etc/skel/ 
+#  when: not z4.stat.exists  
+#  
+#- name: check p10k user present
+#  stat:
+#   path: /home/nnnn/.oh-my-zsh/themes
+#  register: z2
+#
+#- name: copy zsh from system to user 
+#  shell: cp -r /etc/skel/.oh-my-zsh /home/nnnn/
+#  when: not z2.stat.exists 
+#  
+#- name: check zshrc user present
+#  stat:
+#   path: /home/nnnn/.zshrc
+#  register: z5
+#    
+#- name: copy zshrc user for debian
+#  shell: cp -r /etc/skel/.zshrc /home/nnnn/ 
+#  when: (not z5.stat.exists) and  (not ansible_facts['distribution'] == "Archlinux")  
+#
+#- name: rename zshrc for arch
+#  copy:
+#    src:  /home/nnnn/.zshrc
+#    dest: /home/nnnn/.zshrc_back
+#  when:  ansible_facts['distribution'] == "Archlinux" 
+#  
+#- name: copy zshrc user for arch
+#  shell: cp -r /etc/skel/.zshrc /home/nnnn/ 
+#  when:  ansible_facts['distribution'] == "Archlinux"
+#    
+#- name: check p10k config user present
+#  stat:
+#   path: /home/nnnn/.p10k.zsh 
+#  register: z6
+#    
+#- name: copy p10k config  user
+#  shell: cp -r /etc/skel/.p10k.zsh /home/nnnn/ 
+#  when: not z6.stat.exists 
+#
+#- name: check p10k user present
+#  stat:
+#   path: /home/nnnn/.oh-my-zsh/themes/powerlevel10k/powerlevel10k.zsh-theme
+#  register: power
+#
+#- name: rename power10k  
+#  shell: mv /home/ec2_ansible/.oh-my-zsh/themes/powerlevel10k-master /home/nnnn/.oh-my-zsh/themes/powerlevel10k
+#  when: not power.stat.exists
 
 
 
