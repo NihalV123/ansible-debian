@@ -1,4 +1,13 @@
 --- 
+- name: install additional packages for old debian
+      name: "{{ item }}"
+  loop:
+  - python3-dev
+  - docker-registry
+  - docker=doc
+  - docker-compose
+  when: ansible_facts['distribution'] == "Debian"
+    
 - name: install debian packages
   apt:
       name: "{{ item }}"
