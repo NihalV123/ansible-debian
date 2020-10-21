@@ -1,6 +1,6 @@
 --- 
 - name: install additional packages for old debian
-  apt:
+  package:
       name: "{{ item }}"
   loop:
   - python3-dev
@@ -9,7 +9,7 @@
   when: ansible_facts['distribution'] == "Debian"
     
 - name: install debian packages
-  apt:
+  package:
       name: "{{ item }}"
   loop:
   - curl

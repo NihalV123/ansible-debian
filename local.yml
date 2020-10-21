@@ -9,12 +9,6 @@
     string_conversion_action: ignore
     
   pre_tasks:
-  - name: update repo
-    apt:
-        update_cache: yes
-    changed_when: False
-  
-  tasks:
   - name: System details
     debug: msg="{{ item }}"
     with_items: 
@@ -23,13 +17,18 @@
     - "{{ ansible_hostname }}"
     - "{{ ansible_fqdn }}"
     - "{{ ansible_distribution_major_version }}"
-    
+
+  
+  tasks:
+  - name: update repo
+    package:
+        update_cache: yes
+    changed_when: False
   - name: install kali tools for kali linux
-    apt: name=htop state=latest
+    package: name=htop state=latest
     when: ansible_facts['distribution'] == "Kali GNU/Linux"
-        
   - include: packages_debian/users.yml  
-  - include: packages_debian/kali_apt.yml   
+  - include: packages_debian/kali_package.yml   
   - include: packages_debian/kali_python.yml    
   - include: packages_debian/kali_docker.yml   
   - include: packages_debian/kali_node.yml   
