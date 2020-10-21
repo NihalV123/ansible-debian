@@ -190,7 +190,7 @@
 
 - name: check p10k user present
   stat:
-   path: /home/nnnn/.oh-my-zsh/themes/powerlevel10k-master
+   path: /home/nnnn/.oh-my-zsh/themes/powerlevel10k/powerlevel10k.zsh-theme
   register: power
 
 - name: rename power10k  

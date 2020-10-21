@@ -24,9 +24,24 @@
     package:
         update_cache: yes
     changed_when: False
+    
+  - name: Creates nfs directory on desktop
+    file:
+      path: /home/nnnn/Desktop/nfs/
+      state: directory   
+      
+  - name: Mount local NFS volume
+    mount:
+      src: 192.168.4.85:/storage
+      path: /mnt/shared_data
+      opts: rw,sync,hard,intr
+      state: mounted
+      fstype: nfs
+      
   - name: install kali tools for kali linux
     package: name=htop state=latest
     when: ansible_facts['distribution'] == "Kali GNU/Linux"
+    
   - include: packages_debian/users.yml  
   - include: packages_debian/kali_package.yml   
   - include: packages_debian/kali_python.yml    
