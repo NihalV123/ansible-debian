@@ -185,8 +185,6 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 neofetch
-rig| toilet -f term -F border --gay
-
 source ~/.oh-my-zsh/themes/powerlevel10k-master/powerlevel10k.zsh-theme
 source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting-master/zsh-syntax-highlighting.zsh
 source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions-master/zsh-autosuggestions.zsh
