@@ -1,3 +1,4 @@
+
 - name: clone oh my zsh
   unarchive:
     src:  https://codeload.github.com/ohmyzsh/ohmyzsh/zip/master
@@ -124,11 +125,25 @@
 
 - name: Sync ec2 to system
   synchronize:
-    src: /home/ec2_ansible/ 
+    src: "{{ item }}"
     dest: /etc/skel/
-
+  loop:
+  - /home/ec2_ansible/.oh-my-zsh
+  - /home/ec2_ansible/.zshrc
+  - /home/ec2_ansible/lf
+  - /home/ec2_ansible/.p10k.zsh
+  - /home/ec2_ansible/notes
+  - /home/ec2_ansible/.local/share/fonts/MesloLGS NF Regular.ttf
+    
 - name: Sync ec2 to user
   synchronize:
-    src: /home/ec2_ansible/ 
+    src: "{{ item }}"
     dest: /home/nnnn/ 
+  loop:
+  - /home/ec2_ansible/.oh-my-zsh
+  - /home/ec2_ansible/.zshrc
+  - /home/ec2_ansible/lf
+  - /home/ec2_ansible/.p10k.zsh
+  - /home/ec2_ansible/notes
+  - /home/ec2_ansible/.local/share/fonts/MesloLGS NF Regular.ttf
 
