@@ -5,7 +5,6 @@
   loop:
   - python3-dev
   - docker-registry
-  - docker-doc
   - docker-compose
   when: ansible_facts['distribution'] == "Debian"
     
