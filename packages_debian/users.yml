@@ -15,8 +15,14 @@
   stat:
     path: /usr/share/code     
   register: p
-        
-- name: Install vscode from deb
+    
+- name: Install vscode for arch
+  pacman:
+    name: code
+    state: present    
+  when: (not p.stat.exists) and  (ansible_facts['distribution'] == "Archlinux")
+           
+- name: Install vscode for debian
   apt: 
     deb: https://az764295.vo.msecnd.net/stable/d2e414d9e4239a252d1ab117bd7067f125afd80a/code_1.50.1-1602600906_amd64.deb
-  when: not p.stat.exists 
+  when: (not p.stat.exists) and  not (ansible_facts['distribution'] == "Archlinux")

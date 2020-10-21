@@ -37,9 +37,12 @@
   - gettext 
   - libz-dev 
   - libssl-dev
+  - openssh-server
+  - ufw
   - zsh
   - neofetch
   - docker.io      
+  - whois
   - nodejs   
   - virtualenv     
   - fortune  
@@ -91,7 +94,81 @@
    #- thunar  
    #- build-essential  
    #- zlib1g-dev    
+  when: (not ansible_facts['distribution'] == "Archlinux")
 
+- name: install arch packages
+  package:
+      name: "{{ item }}"
+  loop:
+  - curl
+  - php
+  - nodejs
+  - npm
+  - whois
+  - docker
+  - fossil
+  - font-manager
+  - sqlite3
+  - htop
+  - openssh  
+  - ack
+  - ruby-irb
+  #- asciidoc
+  #- asciidoctor
+  - xmlto
+  - docbook2x
+  - gettext 
+  - zsh
+  - neofetch    
+  - nodejs   
+  - lolcat   
+  - fdm    
+  - baobab   
+  - gedit   
+  - nano  
+  - fossil  
+  - remmina  
+   #- vlc  
+   #- gparted  
+   #- gimp  
+   #- filezilla  
+   #- audacity  
+   #- blender
+   #- calibre  
+   #- darktable  
+   #- krita  
+   #- transmission  
+   #- wine  
+   #- libreoffice  
+   #- kdenlive  
+   #- wireshark  
+   #- youtube-dl  
+   #- nmap  
+   #- phpmyadmin 
+   #- krusader 
+   #- openshot  
+   #- obs-studio  
+   #- bleachbit  
+   #- virt-manager  
+   #- ruby-full  
+   #- qjackctl  
+   #- tap-plugins  
+   #- sl  
+   #- cmatrix  
+   #- oneko   
+   #- rig  
+   #- aview  
+   #- ack  
+   #- pv  
+   #- thunar  
+   #- build-essential  
+   #- zlib1g-dev    
+  when: ansible_facts['distribution'] == "Archlinux"
+
+- name: Make sure ssh service is running
+  service:
+    state: started
+    name: sshd
 
 - name: check if composer is installed
   stat:

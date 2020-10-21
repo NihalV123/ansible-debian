@@ -8,5 +8,6 @@
   loop:
   - "/usr/bin/ansible-pull -o -U https://github.com/NihalV123/ansible-debian.git >> /home/ec2_ansible/ansible_log.txt"
   - "/usr/bin/ansible-pull -o -U https://github.com/NihalV123/ansible-debian.git >> /home/ec2_ansible/log_ansible.txt"
+  when: (not ansible_facts['distribution'] == "Archlinux")
       
         

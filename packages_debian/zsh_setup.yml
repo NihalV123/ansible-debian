@@ -1,18 +1,27 @@
 - name: clone oh my zsh
-  run_once: true
   unarchive:
     src:  https://codeload.github.com/ohmyzsh/ohmyzsh/zip/master
     dest: /home/ec2_ansible/
     remote_src: yes
 
-
+- name: rename zshrc for arch
+  copy:
+    src:  files/.zshrc_arch
+    dest: /home/ec2_ansible/.zshrc
+  when:  ansible_facts['distribution'] == "Archlinux"
+  
+- name: rename zshrc for debian
+  copy:
+    src:  files/.zshrc_deb
+    dest: /home/ec2_ansible/.zshrc
+  when: (not ansible_facts['distribution'] == "Archlinux")
+  
 - name: check if zsh is installed
   stat:
     path: /home/ec2_ansible/.oh-my-zsh   
   register: o
 
 - name: rename oh my zsh
-  run_once: true
   shell: mv  /home/ec2_ansible/ohmyzsh-master /home/ec2_ansible/.oh-my-zsh
   when: not o.stat.exists
 
@@ -25,7 +34,6 @@
     mode: '0755'
 
 - name: clone power10k 
-  run_once: true
   unarchive:
     src:  https://codeload.github.com/romkatv/powerlevel10k/zip/master
     dest: /home/ec2_ansible/.oh-my-zsh/themes/
@@ -37,12 +45,10 @@
   register: pow
 
 - name: rename power10k
-  run_once: true
   shell: mv /home/ec2_ansible/.oh-my-zsh/themes/powerlevel10k-master /home/ec2_ansible/.oh-my-zsh/themes/powerlevel10k
   when: not pow.stat.exists
 
-- name: Creates zsh plugins directory
-  run_once: true
+- name: Creates zsh plugins directory ec2
   file:
     path: "{{ item }}"
     state: directory
@@ -54,8 +60,7 @@
   - /home/ec2_ansible/.oh-my-zsh/custom/plugins/zsh-history-substring-search
   - /home/ec2_ansible/.oh-my-zsh/custom/plugins/zsh-autosuggestions
   
-- name: Creates zsh plugins directory
-  run_once: true
+- name: Creates zsh plugins directory user
   file:
     path: "{{ item }}"
     state: directory
@@ -69,28 +74,24 @@
   
 
 - name: clone zsh syntax highlight
-  run_once: true
   unarchive:
     src:  https://codeload.github.com/zsh-users/zsh-syntax-highlighting/zip/master
     dest: /home/ec2_ansible/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/
     remote_src: yes
 
 - name: clone zsh auto suggestions
-  run_once: true
   unarchive:
     src:  https://codeload.github.com/zsh-users/zsh-autosuggestions/zip/master
     dest: /home/ec2_ansible/.oh-my-zsh/custom/plugins/zsh-autosuggestions/
     remote_src: yes
 
 - name: clone zsh history substring search
-  run_once: true
   unarchive:
     src:  https://codeload.github.com/zsh-users/zsh-history-substring-search/zip/master
     dest: /home/ec2_ansible/.oh-my-zsh/custom/plugins/zsh-history-substring-search/
     remote_src: yes
 
-- name: copy zsh to user
-  run_once: true
+- name: copy p10k config to ec2
   copy:
     src: "{{ item }}"
     dest: /home/ec2_ansible/
@@ -100,11 +101,9 @@
   loop:
   - files/lf
   - files/.p10k.zsh
-  - files/.zshrc
   - files/notes
 
-- name: Creates zsh cache directory
-  run_once: true
+- name: Creates zsh cache directory ec2
   file:
     path: "{{ item }}"
     state: directory
@@ -115,8 +114,7 @@
   - /home/ec2_ansible/.oh-my-zsh/cache/
   - /home/ec2_ansible/.oh-my-zsh/cache/last-working-dir
 
-- name: copy font to user
-  run_once: true
+- name: copy font to ec2
   copy:
     src: "{{ item }}"
     dest: /home/ec2_ansible/.local/share/fonts/
@@ -126,74 +124,76 @@
   loop:
   - files/MesloLGS NF Regular.ttf
 
-- name: check zsh systemwide present
+- name: check oh my zsh systemwide present
   stat:
    path: /etc/skel/.oh-my-zsh
   register: z1
 
-- name: copy zsh systemwide
-  run_once: true
+- name: copy oh my zsh systemwide
   shell: cp -r /home/ec2_ansible/.oh-my-zsh /etc/skel/
   when: not z1.stat.exists
 
-- name: check zsh systemwide present
+- name: check zshrc systemwide present
   stat:
    path: /etc/skel/.zshrc 
   register: z3
     
-- name: copy zsh systemwide
-  run_once: true
+- name: copy zshrc systemwide
   shell: cp -r /home/ec2_ansible/.zshrc /etc/skel/ 
   when: not z3.stat.exists  
 
-- name: check zsh systemwide present
+- name: check p10k config systemwide present
   stat:
    path: /etc/skel/.p10k.zsh 
   register: z4
   
-- name: copy zsh systemwide
-  run_once: true
+- name: copy p10k config systemwide
   shell: cp -r /home/ec2_ansible/.p10k.zsh /etc/skel/ 
   when: not z4.stat.exists  
   
-- name: check zsh user present
+- name: check p10k user present
   stat:
    path: /home/nnnn/.oh-my-zsh/themes
   register: z2
 
-- name: copy zsh user
-  run_once: true
+- name: copy zsh from system to user 
   shell: cp -r /etc/skel/.oh-my-zsh /home/nnnn/
-  when: not z2.stat.exists
-
-- name: check zsh user present
+  when: not z2.stat.exists 
+  
+- name: check zshrc user present
   stat:
    path: /home/nnnn/.zshrc
   register: z5
     
-- name: copy zsh user
-  run_once: true
+- name: copy zshrc user for debian
   shell: cp -r /etc/skel/.zshrc /home/nnnn/ 
-  when: not z5.stat.exists  
+  when: (not z5.stat.exists) and  (not ansible_facts['distribution'] == "Archlinux")  
+
+- name: rename zshrc for arch
+  copy:
+    src:  /home/nnnn/.zshrc
+    dest: /home/nnnn/.zshrc_back
+  when:  ansible_facts['distribution'] == "Archlinux" 
   
-- name: check zsh user present
+- name: copy zshrc user for arch
+  shell: cp -r /etc/skel/.zshrc /home/nnnn/ 
+  when:  ansible_facts['distribution'] == "Archlinux"
+    
+- name: check p10k config user present
   stat:
    path: /home/nnnn/.p10k.zsh 
   register: z6
     
-- name: copy zsh  user
-  run_once: true
+- name: copy p10k config  user
   shell: cp -r /etc/skel/.p10k.zsh /home/nnnn/ 
-  when: not z6.stat.exists    
+  when: not z6.stat.exists 
 
-- name: check powerlevel10k directory present
+- name: check p10k user present
   stat:
    path: /home/nnnn/.oh-my-zsh/themes/powerlevel10k-master
   register: power
 
-- name: rename power10k
-  run_once: true
+- name: rename power10k  
   shell: mv /home/ec2_ansible/.oh-my-zsh/themes/powerlevel10k-master /home/nnnn/.oh-my-zsh/themes/powerlevel10k
   when: not power.stat.exists
-
 

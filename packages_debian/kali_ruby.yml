@@ -1,5 +1,5 @@
 --- 
-- name: install ruby gems
+- name: install ruby gems for debian
   become: false
   gem: name={{ item }} 
   with_items: ruby_gems
@@ -10,4 +10,17 @@
   - asciidoctor-pdf
   - asciidoctor
   - pygments.rb
-
+  when: (not ansible_facts['distribution'] == "Archlinux")
+  
+- name: install ruby gems for arch
+  become: false
+  gem: name={{ item }} 
+  with_items: ruby_gems
+  loop:
+  - vagrant
+  - rake
+  - asciidoctor-pdf
+  - asciidoctor
+  - pygments.rb
+  when: ansible_facts['distribution'] == "Archlinux"
+  
