@@ -1,4 +1,5 @@
 --- 
+# run by using  ansible-playbook local.yml
 - hosts: localhost
   connection: local
   gather_facts: yes
@@ -17,7 +18,13 @@
     - "{{ ansible_hostname }}"
     - "{{ ansible_fqdn }}"
     - "{{ ansible_distribution_major_version }}"
-
+    
+  #- name: System details
+  #  gather_facts: True
+  #  gather_subset: interfaces
+  #  module_defaults:
+   # 	arista.eos.eos_facts:
+   #  		gather_network_resources: interfaces
   
   tasks:
   - name: update repo
@@ -25,18 +32,6 @@
         update_cache: yes
     changed_when: False
     
-  - name: Creates nfs directory on desktop
-    file:
-      path: /home/nnnn/Desktop/nfs/
-      state: directory   
-      
-  - name: Mount local NFS volume
-    mount:
-      src: 192.168.4.85:/storage
-      path: /mnt/shared_data
-      opts: rw,sync,hard,intr
-      state: mounted
-      fstype: nfs
       
   - name: install kali tools for kali linux
     package: name=htop state=latest

@@ -7,8 +7,8 @@
   - vagrant
   - rake
   - colorls
-  - asciidoctor-pdf
-  - asciidoctor
+  #- asciidoctor-pdf
+  #- asciidoctor
   - pygments.rb
   when: (not ansible_facts['distribution'] == "Archlinux")
   
@@ -19,8 +19,8 @@
   loop:
   - vagrant
   - rake
-  - asciidoctor-pdf
-  - asciidoctor
+  #- asciidoctor-pdf
+  #- asciidoctor
   - pygments.rb
   when: ansible_facts['distribution'] == "Archlinux"
   

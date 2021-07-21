@@ -11,6 +11,7 @@
   loop:
   - alpine
   - linuxserver/guacd
+  - portainer/portainer-ce 
   #- syncthing/syncthing
   #- pymedusa/medusa
   #- linuxserver/airsonic

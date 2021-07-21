@@ -17,7 +17,7 @@
   - nodejs
   - npm
   - fortunes-min
-  - git-all
+  - git
   - fossil
   - font-manager
   - libsqlite3-dev
@@ -31,8 +31,8 @@
   - libcurl4-gnutls-dev
   #- asciidoc
   #- asciidoctor
-  - xmlto
-  - docbook2x
+  #- xmlto
+  #- docbook2x
   - libexpat1-dev 
   - gettext 
   - libz-dev 
@@ -115,8 +115,8 @@
   - ruby-irb
   #- asciidoc
   #- asciidoctor
-  - xmlto
-  - docbook2x
+  #- xmlto
+  #- docbook2x
   - gettext 
   - zsh
   - neofetch    
